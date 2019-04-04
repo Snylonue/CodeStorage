@@ -1,26 +1,30 @@
-def loca(funcl,maxi,insert):         #二分法函数
-    min,max=0,maxi
-    while (min<max):
-        mid=(max+min)//2
-        if (insert<funcl[mid]):
-            max=mid
-        elif (insert>funcl[mid]):
-            min=mid
-        if(max-min==1):
-            return mid
-a=input()
-a=a.split(',')                     
+def loca(funcl,insert):
+    min,max=0,len(funcl)-1
+    while (True):
+    	mid=(max+min)//2
+    	if(max-min<=1):
+    		return mid
+    	else:
+    		if (insert<funcl[mid]):
+    			max=mid
+    		elif (insert>funcl[mid]):
+    			min=mid
+a=input()	
+a=a.split(',')
 for x in range(len(a)):
-    a[x]=int(a[x])                   #整数list
-for x in range(len(a)-1):            #迭代list进行排序（有问题）
+    a[x]=float(a[x])
+for x in range(len(a)-1):
     if (a[x]>a[x+1]):
-        b=a[:x]
-        t=a[x+1]
-        point=loca(b,x,a[x+1])
-        y=x+1
-        while(y>point):
-           a[y]=a[y-1]
-           y-=y
-        a[point]=t
-for out in a:                       #输出                     
-    print(out)
+    	if (x==0):
+    		a[x],a[x+1]=a[x+1],a[x]
+    	else:
+    		b=a[:x]
+    		t=a[x+1]
+    		point=loca(b,t)
+    		y=x+1
+    		while(y>point):
+    			a[y]=a[y-1]
+    			y-=y
+    		a[point]=t
+for out in a:
+    print(out,)
