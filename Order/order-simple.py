@@ -1,16 +1,19 @@
 a=input()	
 a=a.split(',')
-for x1 in range(len(a)):             #输入
+for x1 in range(len(a)):             
     a[x1]=float(a[x1])            
 def correct(num):                 
-	for numx in range(len(num)-1):   #判断顺序是否正确
-		if (num[numx]<num[numx+1] and numx==len(num)-1):
-			return True
+	for numx in range(len(num)-1):
 		if (num[numx]>num[numx+1]):
 			return False
-while (correct(a)==False):           #暴力排序
-	for x2 in range(len(a)-1):
-		if (a[x2]>a[x2+1]):
-			a[x2],a[x2+1]=a[x2+1],a[x2]
+		elif (numx==len(num)-2):
+			return True
+while (correct(a)==False):           
+	for x2 in range(len(a)-1,0,-1):
+		max=0;
+		for x3 in range(x2+1):
+			if (a[x3]>a[max]):
+				max=x3
+		a[max],a[x2]=a[x2],a[max]
 for out in a:
 	print(out,)
