@@ -11,20 +11,18 @@ def loca(funcl,insert):
     			min=mid
 a=input()	
 a=a.split(',')
-for x in range(len(a)):
-    a[x]=float(a[x])
-for x in range(len(a)-1):
-    if (a[x]>a[x+1]):
-    	if (x==0):
-    		a[x],a[x+1]=a[x+1],a[x]
+for x1 in range(len(a)):
+    a[x1]=float(a[x1])
+for x2 in range(len(a)-1):
+    if (a[x2]>a[x2+1]):
+    	if (x2==0):
+    		a[x2],a[x2+1]=a[x2+1],a[x2]
     	else:
-    		b=a[:x]
-    		t=a[x+1]
+    		b=a[:x2]
+    		t=a[x2+1]
     		point=loca(b,t)
-    		y=x+1
-    		while(y>point):
-    			a[y]=a[y-1]
-    			y-=y
+    		for x3 in range(x2+1,point+1,-1):
+    			a[x3]=a[x3-1]
     		a[point]=t
 for out in a:
     print(out,)
